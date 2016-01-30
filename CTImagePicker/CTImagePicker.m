@@ -97,7 +97,7 @@ static CTImagePicker *bdImagePickerInstance = nil;
     }
     
     if (_finishAction) {
-        _finishAction(image, NO);
+        _finishAction(image);
     }
     
     [picker dismissViewControllerAnimated:YES completion:^{}];
@@ -108,7 +108,7 @@ static CTImagePicker *bdImagePickerInstance = nil;
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     if (_finishAction) {
-        _finishAction(nil, YES);
+        _finishAction(nil);
     }
 
     [picker dismissViewControllerAnimated:YES completion:^{}];

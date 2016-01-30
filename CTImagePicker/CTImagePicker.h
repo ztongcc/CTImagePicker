@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^CTImagePickerFinishAction)(UIImage *image, BOOL isCancle);
+typedef void (^CTImagePickerFinishAction)(UIImage *image);
 
 @interface CTImagePicker : NSObject
 
