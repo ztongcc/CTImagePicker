@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '4.3'
   s.requires_arc = true
 
-  s.public_header_files = 'CTCoreCategory/*.h'
+  s.public_header_files = 'CTImagePicker/*.h'
   s.source_files = 'CTImagePicker/*.{h,m}'
 
   s.frameworks   = 'Foundation', 'CoreGraphics', 'UIKit'
