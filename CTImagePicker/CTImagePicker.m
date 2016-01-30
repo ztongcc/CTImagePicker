@@ -2,29 +2,30 @@
 //  ImagePicker.m
 //  BDKit
 //
-//  Created by Liu Jinyong on 16/1/20.
-//  Copyright © 2016年 Baidu. All rights reserved.
+//  Created by admin on 16/1/19.
+//  Copyright © 2016年 Evan.Cheng. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "BDImagePicker.h"
+#import "CTImagePicker.h"
 
-@interface BDImagePicker()<UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CTImagePicker()<UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, weak) UIViewController *viewController;
-@property (nonatomic, copy) BDImagePickerFinishAction finishAction;
+@property (nonatomic, copy) CTImagePickerFinishAction finishAction;
 @property (nonatomic, assign) BOOL allowsEditing;
 
 @end
 
 
-static BDImagePicker *bdImagePickerInstance = nil;
+static CTImagePicker *bdImagePickerInstance = nil;
 
-@implementation BDImagePicker
+@implementation CTImagePicker
 
-+ (void)showImagePickerFromViewController:(UIViewController *)viewController allowsEditing:(BOOL)allowsEditing finishAction:(BDImagePickerFinishAction)finishAction {
++ (void)showImagePickerFromViewController:(UIViewController *)viewController allowsEditing:(BOOL)allowsEditing finishAction:(CTImagePickerFinishAction)finishAction
+{
     if (bdImagePickerInstance == nil) {
-        bdImagePickerInstance = [[BDImagePicker alloc] init];
+        bdImagePickerInstance = [[CTImagePicker alloc] init];
     }
     
     [bdImagePickerInstance showImagePickerFromViewController:viewController
@@ -34,14 +35,15 @@ static BDImagePicker *bdImagePickerInstance = nil;
 
 - (void)showImagePickerFromViewController:(UIViewController *)viewController
                             allowsEditing:(BOOL)allowsEditing
-                             finishAction:(BDImagePickerFinishAction)finishAction {
+                             finishAction:(CTImagePickerFinishAction)finishAction
+{
     _viewController = viewController;
     _finishAction = finishAction;
     _allowsEditing = allowsEditing;
     
     UIActionSheet *sheet = nil;
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
         sheet = [[UIActionSheet alloc] initWithTitle:nil
                                             delegate:self
                                    cancelButtonTitle:@"取消"
@@ -59,7 +61,8 @@ static BDImagePicker *bdImagePickerInstance = nil;
     [sheet showInView:window];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
     if ([title isEqualToString:@"拍照"]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -71,21 +74,30 @@ static BDImagePicker *bdImagePickerInstance = nil;
     }else if ([title isEqualToString:@"从相册选择"]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
-        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.allowsEditing = _allowsEditing;
         [_viewController presentViewController:picker animated:YES completion:nil];
     }else {
         bdImagePickerInstance = nil;
     }
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if ([viewController isKindOfClass:NSClassFromString(@"PUUIImageViewController")]) {
+        viewController.navigationController.navigationBarHidden = YES;
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
     UIImage *image = info[UIImagePickerControllerEditedImage];
     if (image == nil) {
         image = info[UIImagePickerControllerOriginalImage];
     }
     
     if (_finishAction) {
-        _finishAction(image);
+        _finishAction(image, NO);
     }
     
     [picker dismissViewControllerAnimated:YES completion:^{}];
@@ -93,13 +105,14 @@ static BDImagePicker *bdImagePickerInstance = nil;
     bdImagePickerInstance = nil;
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
     if (_finishAction) {
-        _finishAction(nil);
+        _finishAction(nil, YES);
     }
-    
+
     [picker dismissViewControllerAnimated:YES completion:^{}];
-    
+
     bdImagePickerInstance = nil;
 }
 

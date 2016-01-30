@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "BDImagePicker.h"
+#import "CTImagePicker.h"
 
 @interface ViewController ()
 
@@ -16,7 +16,7 @@
 @implementation ViewController
 
 - (IBAction)toggleAvatar:(UIButton *)sender {
-    [BDImagePicker showImagePickerFromViewController:self allowsEditing:YES finishAction:^(UIImage *image) {
+    [CTImagePicker showImagePickerFromViewController:self allowsEditing:YES finishAction:^(UIImage *image) {
         if (image) {
             [sender setBackgroundImage:image forState:UIControlStateNormal];
         }

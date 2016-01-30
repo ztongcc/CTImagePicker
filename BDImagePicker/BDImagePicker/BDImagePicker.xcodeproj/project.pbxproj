@@ -13,7 +13,7 @@
 		6E7D7A711C4F2A78000F671E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E7D7A6F1C4F2A78000F671E /* Main.storyboard */; };
 		6E7D7A731C4F2A78000F671E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E7D7A721C4F2A78000F671E /* Assets.xcassets */; };
 		6E7D7A761C4F2A78000F671E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E7D7A741C4F2A78000F671E /* LaunchScreen.storyboard */; };
-		6E7D7A801C4F2A91000F671E /* BDImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D7A7F1C4F2A91000F671E /* BDImagePicker.m */; };
+		6E7D7A801C4F2A91000F671E /* CTImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D7A7F1C4F2A91000F671E /* CTImagePicker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +27,8 @@
 		6E7D7A721C4F2A78000F671E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E7D7A751C4F2A78000F671E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E7D7A771C4F2A78000F671E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E7D7A7E1C4F2A91000F671E /* BDImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImagePicker.h; sourceTree = "<group>"; };
-		6E7D7A7F1C4F2A91000F671E /* BDImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImagePicker.m; sourceTree = "<group>"; };
+		6E7D7A7E1C4F2A91000F671E /* CTImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTImagePicker.h; sourceTree = "<group>"; };
+		6E7D7A7F1C4F2A91000F671E /* CTImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTImagePicker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +86,8 @@
 		6E7D7A7D1C4F2A91000F671E /* BDImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				6E7D7A7E1C4F2A91000F671E /* BDImagePicker.h */,
-				6E7D7A7F1C4F2A91000F671E /* BDImagePicker.m */,
+				6E7D7A7E1C4F2A91000F671E /* CTImagePicker.h */,
+				6E7D7A7F1C4F2A91000F671E /* CTImagePicker.m */,
 			);
 			path = BDImagePicker;
 			sourceTree = "<group>";
@@ -163,7 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E7D7A6E1C4F2A78000F671E /* ViewController.m in Sources */,
-				6E7D7A801C4F2A91000F671E /* BDImagePicker.m in Sources */,
+				6E7D7A801C4F2A91000F671E /* CTImagePicker.m in Sources */,
 				6E7D7A6B1C4F2A78000F671E /* AppDelegate.m in Sources */,
 				6E7D7A681C4F2A78000F671E /* main.m in Sources */,
 			);
@@ -314,6 +314,7 @@
 				6E7D7A7C1C4F2A78000F671E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
