@@ -5,10 +5,10 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                      一行代码选择图片
                    DESC
-  s.homepage     = "https://github.com/Evan-CT/ImagePicker"
+  s.homepage     = "https://github.com/Excalibur-CT/ImagePicker"
   s.license      = 'MIT'
   s.author       = { "Evan.Cheng" => "Evan_Tong@163.com" }
-  s.source       = { :git => "https://github.com/Evan-CT/ImagePicker.git", :tag =>  s.version }
+  s.source       = { :git => "https://github.com/Excalibur-CT/ImagePicker.git", :tag =>  s.version }
 
   s.platform     = :ios, '4.3'
   s.requires_arc = true
