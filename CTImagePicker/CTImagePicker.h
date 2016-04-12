@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-typedef void (^CTImagePickerFinishAction)(UIImage *image);
+NS_ASSUME_NONNULL_BEGIN
+
+typedef void (^CTImagePickerFinishAction)(UIImage * __nullable image, BOOL isCancle);
 
 @interface CTImagePicker : NSObject
 
@@ -21,3 +24,5 @@ typedef void (^CTImagePickerFinishAction)(UIImage *image);
                              finishAction:(CTImagePickerFinishAction)finishAction;
 
 @end
+
+NS_ASSUME_NONNULL_END
